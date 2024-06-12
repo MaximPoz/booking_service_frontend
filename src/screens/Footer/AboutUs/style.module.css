@@ -1,0 +1,39 @@
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1200px;
+  
+}
+
+.backgroundImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 98%;
+  background-image: url('https://34travel.me/media/posts/5d5e9279df572-yakutsk-og.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+}
+
+.welcome {
+  color: #333;
+  font-size: 44px;
+  margin-bottom: 20px;
+  position: relative
+}
+
+.textClass {
+  color: #000000;
+  font-size: 25px;
+  line-height: 1.6;
+  position: relative
+}
+
+.textContainer {
+  flex: 1;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}

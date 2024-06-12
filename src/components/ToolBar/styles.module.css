@@ -1,0 +1,89 @@
+.toolbar {
+  position: fixed;
+  top: 12%;
+  left: -200px;
+  width: 245px;
+  height: 100%;
+  transition: right 0.3s ease;
+  border-radius: 0px 20px;
+  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out; /* Кайф */
+}
+
+.toolbar.open {
+  left: 0;
+  background-color: #082c42;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out; 
+}
+
+.filter {
+  list-style-type: none;
+  padding: 0;
+}
+
+.filterElement {
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.filterElement:hover {
+  color: #da7e51; /* розовый цвет при наведении */
+}
+
+.priceFilter {
+  margin-top: 20px;
+}
+
+.titleFilter {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 4px;
+  margin-right: 10px;
+  width: 80px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.input::placeholder {
+  color: #da7e51;
+}
+
+.buttonForm {
+  padding: 10px 20px;
+  margin: 10px 0px 0px 20px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonForm:hover {
+  background-color: #da7e51;
+  color: #000;
+}
+
+.btnOpen {
+  position: absolute;
+  right: 0px;
+  margin: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #da7e51;
+  transform: scale(2);
+}
