@@ -1,7 +1,8 @@
 import { useState } from "react"
 
 import { LiaAngleDoubleLeftSolid, LiaAngleDoubleRightSolid } from "react-icons/lia";
-import { FaRegCircleDot, FaRegCircle  } from "react-icons/fa6";
+import { FaRegCircleDot, FaRegCircle } from "react-icons/fa6";
+import { v4 as uuidv4 } from 'uuid';
 import s from "./style.module.css"
 
 
@@ -23,62 +24,39 @@ export const ImageSlider = ({ images }) => {
   }
 
   return (
-    <section
-      aria-label="Image Slider"
-      style={{ width: "100%", height: "100%", position: "relative" }}
-    >
-      <a href="#after-image-slider-controls" className={s.skipLink}>
-        Skip Image Slider Controls
-      </a>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          overflow: "hidden",
-        }}
-      >
+    <section className={s.skipSection}>
+      <a className={s.skipLink}></a>
 
-        {images.map(url => (
-            <img
-              key={url} 
-              src={url}
-              alt={`Тут ошибка: ${url}`}
-              className={s.imgSliderImg}
-              style={{ translate: `${-100 * imageIndex}%` }}
-            />
-  
+      <div className={s.imgColumn}>
+        {images.map((url) => (
+          <img
+            key={uuidv4()}
+            src={url}
+            alt={'image'}
+            className={s.imgSliderImg}
+            style={{ translate: `${-100 * imageIndex}%` }}
+          />
         ))}
       </div>
+
       <button
         onClick={showPrevImage}
-        className={s.imgSliderBtn}
-        style={{ left: 0 }}
-        aria-label="View Previous Image"
+        className={s.imgSliderBtnLeft}
       >
         <LiaAngleDoubleLeftSolid aria-hidden />
       </button>
+
       <button
         onClick={showNextImage}
-        className={s.imgSliderBtn}
-        style={{ right: 0 }}
-        aria-label="View Next Image"
+        className={s.imgSliderBtnRight}
       >
         <LiaAngleDoubleRightSolid aria-hidden />
       </button>
-      <div
-        style={{
-          position: "absolute",
-          bottom: ".5rem",
-          left: "50%",
-          translate: "-50%",
-          display: "flex",
-          gap: ".25rem",
-        }}
-      >
+      
+      <div className={s.imgSliderDot}>
         {images.map((_, index) => (
           <button
-          key={ index} 
+            key={index}
             className={s.imgSliderDotBtn}
             aria-label={`View Image ${index + 1}`}
             onClick={() => setImageIndex(index)}
@@ -86,7 +64,7 @@ export const ImageSlider = ({ images }) => {
             {index === imageIndex ? (
               <FaRegCircleDot aria-hidden />
             ) : (
-              <FaRegCircle  aria-hidden />
+              <FaRegCircle aria-hidden />
             )}
           </button>
         ))}

@@ -57,6 +57,22 @@ export const LogIn = ({ updateState }) => {
             ),
             { duration: 8000 }
           );
+        }else if (error.response.status === 404) {
+          console.error(error.response.data.message);
+          toast(
+            (t) => (
+              <span>
+                Такого аккаунта не сществует¯\_(ツ)_/¯ Хотите зарегистрироваться?!
+                <button
+                  className={style.btn}
+                  onClick={() => toast.dismiss(navigate("/reg"))}
+                >
+                  Жми сюда!
+                </button>
+              </span>
+            ),
+            { duration: 8000 }
+          );
         }
       });
   };

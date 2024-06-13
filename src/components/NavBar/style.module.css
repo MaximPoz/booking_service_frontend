@@ -1,16 +1,16 @@
-.container {
+/* .container {
   width: 100%;
   background-color: #082c42;
-  font-size: 20px; /* Увеличиваем размер шрифта */
-  font-weight: bold; /* Делаем текст жирным */
-  color: #da7e51; /* Изменяем цвет текста на томатный */
-  letter-spacing: 2px; /* Увеличиваем расстояние между буквами */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавляем тень к тексту */
+  font-size: 20px; 
+  font-weight: bold; 
+  color: #da7e51; 
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
   padding-top: 100px;
-}
+} */
 
 .nav {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;

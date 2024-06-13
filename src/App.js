@@ -30,14 +30,6 @@ export default function App() {
     return storedIsAuth === 'true';
   });
 
-  const [pinCode, setPinCode] = useState(null)
-
-  const handlePinCodeChange = (newData) => {
-    setPinCode(newData)
-  };
-
-   console.log(pinCode)
-
   // Функция для обновления состояния и сохранения его в локальном хранилище
   const updateState = (newState) => {
     setIsAuth(newState);
@@ -62,7 +54,7 @@ export default function App() {
   ];
 
   return (
-    <MyContext.Provider value={handlePinCodeChange}>
+    <>
         <Toaster position="top-right" gutter={10} />
 
         {isAuth === true ? (
@@ -90,7 +82,7 @@ export default function App() {
             path="/personalAccount"
             element={<PersonalAccount isAuth={isAuth} updateState={updateState}/>}
           />
-          <Route path="/changeProfile" element={<ChangeProfile />} />
+          <Route path="/changeProfile" element={<ChangeProfile isAuth={isAuth} updateState={updateState}/>} />
 
           <Route path="/reg" element={<Registration isAuth={isAuth} />} />
           <Route path="/regSuccess" element={<RegSuccess />} />
@@ -103,6 +95,6 @@ export default function App() {
             element={<ProductPage  isAuth={isAuth}/>} //поскольку тут id это переменная, мы можем передать её в компоненту ProductPage
           />
         </Routes>
-    </MyContext.Provider>
+    </>
   );
 }

@@ -1,8 +1,1 @@
-.container {
-    display: flex; /* Устанавливаем родительскому контейнеру свойство display: flex */
-    flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку при необходимости */
-    text-align: center;
-    margin: 20px 100px;
-    justify-content: space-around;   
-}
 

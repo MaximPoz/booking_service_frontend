@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 
 
-export const ChangeProfile = () => {
+export const ChangeProfile = ({updateState}) => {
   const navigate = useNavigate()
 
+  const [useArea, serUseArea] = useState(true)
   const [user, setUser] = useState({
     name: "Загрузка",
     email: "Загрузка",
@@ -29,6 +31,9 @@ export const ChangeProfile = () => {
     const fetchItem = async () => {
       try {
         const response = await axios.get(`${API_USERS}/${id}`);
+        if (!response.ok) {
+          throw new Error('Ошибка')
+        }
         setUser(response.data);
       } catch (error) {
         console.error(error);
@@ -43,7 +48,16 @@ export const ChangeProfile = () => {
       : user.name;
   };
 
-
+  const handleLogout = () => {
+    // Сбрасываем состояние isAuth
+    updateState(false);
+    // Удаляем токен аутентификации из локального хранилища
+    localStorage.removeItem("token");
+    // Удаляем токен аутентификации из куков
+    Cookies.remove("token");
+    // Перенаправляем пользователя на страницу авторизации 
+    navigate("/logIn");
+  };
 
   const {
     register,
@@ -53,24 +67,31 @@ export const ChangeProfile = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-
     // Отфильтровываем данные, чтобы не отправлять пустые поля
     const filteredData = Object.fromEntries(
       Object.entries(data).filter(([key, value]) => value !== '')
     );
     console.log(filteredData);
 
+    if(Object.keys(filteredData).length === 0){
+      navigate("/personalAccount");
+      toast.success("В связи с отсутствием изменений вы были перенаправлены в Личный кабинет 😀", {
+        duration: 3000,
+      });
+    }else{
+
     try {
       const response = await axios.put(`${API_USERS}/${id}`, filteredData);
       console.log("Данные пользователя успешно обновлены:", response.data);
-      toast.success("Данные пользователя успешно обновлены", {
+      toast.success("Данные пользователя успешно обновлены, в целях безовпасности просим вас повторно авторизоваться", {
         duration: 3000,
       });
-      navigate('/logIn')
+      handleLogout()
     } catch (error) {
       console.error("Ошибка при обновлении данных пользователя:", error);
     }
   };
+  }
 
   return (
     <div className={style.personalAccount}>

@@ -5,6 +5,7 @@
   width: 300px;
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .input {
@@ -42,6 +43,8 @@ a {
 .reCAPTCHA {
   transform: scale(0.9); /* Уменьшение размера */
   transform-origin: 0 0;
+  z-index: 0; /* Устанавливаем z-index на 0 */
+  position: relative; /* Задаем относительное позиционирование */
 }
 
 .error {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
 import { ImageSlider } from "../../../components/ImageSlider/ImageSlider";
 
 export const ProductPage = ({ isAuth }) => {
@@ -37,10 +38,10 @@ export const ProductPage = ({ isAuth }) => {
   console.log(images);
   return (
     <div className={style.container}>
-      {item.img && item.img.length > 0 ? (
+      {images  && images.length > 0 ? (
         <ImageSlider images={images} />
       ) : (
-        "Изображение украли"
+        "Изображения отстствуют"
       )}
       <p className={style.textClass}>{title}</p>
       <p className={style.textClass}>Цена за сутки: {price} рублей</p>

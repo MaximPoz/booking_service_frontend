@@ -80,7 +80,7 @@ export const Registration = () => {
         />
         {serverErrors.email && <span className={style.error}>{serverErrors.email}</span>}
         
-        <p className="textClass">Мобила</p>
+        <p className="textClass">Номер телефона</p>
         <input
           className={`${style.input} ${ serverErrors.firstName ? style.inputError : ''}`}
           type="tel"
