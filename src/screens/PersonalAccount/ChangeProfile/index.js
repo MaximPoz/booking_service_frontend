@@ -25,7 +25,7 @@ export const ChangeProfile = ({updateState}) => {
 
   console.log(id)
 
-  const API_USERS = "http://localhost:5555/users";
+  const API_USERS = "https://booking-service-backend.onrender.com/users";
 
   useEffect(() => {
     const fetchItem = async () => {

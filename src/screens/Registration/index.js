@@ -30,7 +30,7 @@ export const Registration = () => {
     if (data.password === data.rePassword) {
       try {
         const response = await axios.post(
-          "http://localhost:5555/users/registration",
+          "https://booking-service-backend.onrender.com/users/registration",
           {
             firstName: data.firstName,
             email: data.email,

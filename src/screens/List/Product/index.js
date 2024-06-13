@@ -9,7 +9,7 @@ export const ProductPage = ({ isAuth }) => {
   const { _id } = useParams();
   const navigate = useNavigate();
 
-  const API_PRODUCTS = "http://localhost:5555/houses";
+  const API_PRODUCTS = "https://booking-service-backend.onrender.com/houses";
 
   const [item, setItem] = useState({
     price: "",

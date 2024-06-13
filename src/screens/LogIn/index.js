@@ -18,7 +18,7 @@ export const LogIn = ({ updateState }) => {
 
   const onSubmit = async ({ email, password }) => {
     axios
-      .post("http://localhost:5555/users/login", { email, password })
+      .post("https://booking-service-backend.onrender.com/users/login", { email, password })
       .then((res) => {
         // Получение токена из куки
         const getTokenFromCookie = () => {

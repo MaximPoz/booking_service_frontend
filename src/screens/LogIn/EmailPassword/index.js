@@ -22,7 +22,7 @@ export const EmailPassword = () => {
   
     try {
       const response = await axios.post(
-        "http://localhost:5555/users/check-pin",
+        "https://booking-service-backend.onrender.com/users/check-pin",
         {
           email: email,
           pinCode: cleanedPinCode,

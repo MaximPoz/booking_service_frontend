@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 export const EmailNewPassword = () => {
   const location = useLocation();
-  const API_USERS = "http://localhost:5555/users";
+  const API_USERS = "https://booking-service-backend.onrender.com/users";
 
   const id = location.state?.id; // Получение _id из стейта
 

@@ -4,7 +4,7 @@ import { Product } from "./allProduct";
 import { ToolBar } from "../../components/ToolBar/ToolBar";
 import axios from "axios";
 
-const API_PRODUCTS = "http://localhost:5555/houses";
+const API_PRODUCTS = "https://booking-service-backend.onrender.com/houses";
 
 export const List = () => {
   const [items, setItems] = useState([]);

@@ -33,7 +33,7 @@ export const ChangePassword = () => {
     try {
       setLoading(true)
       const response = await axios.post(
-        "http://localhost:5555/users/send-pin",
+        "https://booking-service-backend.onrender.com/users/send-pin",
         { email: data.Email }
       );
       console.log("Ответ от сервера:", response.data.message);
