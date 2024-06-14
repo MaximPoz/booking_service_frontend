@@ -4,7 +4,6 @@ import style from "./style.module.css";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { jwtDecode } from "jwt-decode";
 
 export const LogIn = ({ updateState }) => {
   axios.defaults.withCredentials = true;
@@ -17,31 +16,36 @@ export const LogIn = ({ updateState }) => {
   } = useForm();
 
   const onSubmit = async ({ email, password }) => {
-    axios
-      .post("https://booking-service-backend.onrender.com/users/login", { email, password })
-      .then((res) => {
-        // Получение токена из куки
-        const getTokenFromCookie = () => {
-          const token = document.cookie
-            .split(";")
-            .find((cookie) => cookie.trim().startsWith("token="));
-          if (token) {
-            return token.split("=")[1];
-          } else {
-            return null;
-          }
-        };
+    try {
+      const res = await axios.post(
+        "https://booking-service-backend.onrender.com/users/login",
+        {
+          email,
+          password,
+        }
+      );
 
-        // Использование функции для получения токена
-        const token = getTokenFromCookie();
+      // Получение токена из куки
+      const getTokenFromCookie = () => {
+        const token = document.cookie
+          .split(";")
+          .find((cookie) => cookie.trim().startsWith("token="));
+        return token ? token.split("=")[1] : null;
+      };
+
+      // Использование функции для получения токена
+      const token = getTokenFromCookie();
+
+      if (token != null) {
         localStorage.setItem("token", token);
-
         updateState(true);
         navigate("/personalAccount");
-      })
-      .catch((error) => {
+      }else{
+        console.error('Проблема с куками')
+      }
+    } catch (error) {
+      if (error.response) {
         if (error.response.status === 405) {
-          //Во жесть тут xD
           console.error(error.response.data.message);
           toast(
             (t) => (
@@ -57,12 +61,12 @@ export const LogIn = ({ updateState }) => {
             ),
             { duration: 8000 }
           );
-        }else if (error.response.status === 404) {
+        } else if (error.response.status === 404) {
           console.error(error.response.data.message);
           toast(
             (t) => (
               <span>
-                Такого аккаунта не сществует¯\_(ツ)_/¯ Хотите зарегистрироваться?!
+                Такого аккаунта не существует¯\_(ツ)_/¯ Хотите зарегистрироваться?!
                 <button
                   className={style.btn}
                   onClick={() => toast.dismiss(navigate("/reg"))}
@@ -74,7 +78,12 @@ export const LogIn = ({ updateState }) => {
             { duration: 8000 }
           );
         }
-      });
+      } else {
+        // Обработка ошибок, которые не связаны с ответом сервера (например, сетевая ошибка)
+        console.error("Ошибка запроса:", error.message);
+        toast.error("Ошибка запроса, попробуйте снова позже.");
+      }
+    }
   };
 
   return (

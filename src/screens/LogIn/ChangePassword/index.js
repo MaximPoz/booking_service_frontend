@@ -37,16 +37,24 @@ export const ChangePassword = () => {
         { email: data.Email }
       );
       console.log("Ответ от сервера:", response.data.message);
-      setMessage(response.data.message);
-      navigate("/emailPassword", { state: { pinCode: response.data.message, email: data.Email } });
+
+
+       const message = response?.data?.message;
+
+      if (message) {
+        setMessage(message);
+        navigate("/emailPassword", { state: { pinCode: message, email: data.Email } });
+      } else {
+        console.error("Не удалось получить сообщение из ответа сервера");
+        setMessage("Не удалось получить сообщение из ответа сервера")
+      }
     } catch (error) {
-      setMessage(error.response.data.message);
+      console.error("Ошибка при отправке запроса:", error?.response?.data?.message);
+      setMessage(error?.response?.data?.message || "Нет ответа от сервера, попробуйте позже");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
-
-  console.log(email);
 
   return (
     <div className={style.container}>
