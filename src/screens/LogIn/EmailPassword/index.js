@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useLocation } from "react-router-dom";
 import style from "./style.module.css";
 import axios from "axios";
+import { baseUrl } from "../../../Urls";
 
 export const EmailPassword = () => {
-  // const [id, setId] = useState();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -22,15 +22,12 @@ export const EmailPassword = () => {
   
     try {
       const response = await axios.post(
-        "https://booking-service-backend.onrender.com/users/check-pin",
+        `${baseUrl}/users/check-pin`,
         {
           email: email,
           pinCode: cleanedPinCode,
         }
       );
-  
-      console.log("Ответ от сервера:", response.data.message);
-      // setId(response.data.message);
   
       // Проверка статуса ответа
       if (response.status === 200) {

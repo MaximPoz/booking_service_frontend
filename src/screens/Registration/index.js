@@ -5,6 +5,7 @@ import style from "./style.module.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
+import { baseUrl } from "../../Urls";
 
 
 export const Registration = () => {
@@ -30,7 +31,7 @@ export const Registration = () => {
     if (data.password === data.rePassword) {
       try {
         const response = await axios.post(
-          "https://booking-service-backend.onrender.com/users/registration",
+          `${baseUrl}/users/registration`,
           {
             firstName: data.firstName,
             email: data.email,

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
-
+import { baseUrl } from "../../../Urls";
 import style from "./style.module.css";
 
 
@@ -33,10 +33,9 @@ export const ChangePassword = () => {
     try {
       setLoading(true)
       const response = await axios.post(
-        "https://booking-service-backend.onrender.com/users/send-pin",
+        `${baseUrl}/users/send-pin`,
         { email: data.Email }
       );
-      console.log("Ответ от сервера:", response.data.message);
 
 
        const message = response?.data?.message;

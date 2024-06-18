@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
 import {useNavigate } from "react-router-dom";
+import { baseUrl } from "../../../Urls";
 
 export const PersonalAccount = ({updateState}) => {
   const [user, setUser] = useState();
@@ -14,7 +15,7 @@ export const PersonalAccount = ({updateState}) => {
   const {id} = decodedToken
  
 
-  const API_USERS = 'https://booking-service-backend.onrender.com/users'
+  const API_USERS = `${baseUrl}/users`
 
   useEffect(() => {
     const fetchItem = async () => {

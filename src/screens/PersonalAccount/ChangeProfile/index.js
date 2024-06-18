@@ -6,13 +6,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
-
+import { baseUrl } from "../../../Urls";
 
 export const ChangeProfile = ({updateState}) => {
   const navigate = useNavigate()
 
-  const [useArea, serUseArea] = useState(true)
   const [user, setUser] = useState({
     name: "Загрузка",
     email: "Загрузка",
@@ -25,7 +23,7 @@ export const ChangeProfile = ({updateState}) => {
 
   console.log(id)
 
-  const API_USERS = "https://booking-service-backend.onrender.com/users";
+  const API_USERS = `${baseUrl}/users`
 
   useEffect(() => {
     const fetchItem = async () => {

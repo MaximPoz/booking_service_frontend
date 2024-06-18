@@ -4,6 +4,10 @@ import style from "./style.module.css";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { baseUrl } from "../../Urls";
+
+const API_AUTH = `${baseUrl}/users/login`
+
 
 export const LogIn = ({ updateState }) => {
   axios.defaults.withCredentials = true;
@@ -18,73 +22,66 @@ export const LogIn = ({ updateState }) => {
   const onSubmit = async ({ email, password }) => {
     try {
       const res = await axios.post(
-        "https://booking-service-backend.onrender.com/users/login",
+        API_AUTH,
         {
           email,
           password,
         }
       );
 
-      // Получение токена из куки
-      const getTokenFromCookie = () => {
-        const token = document.cookie
-          .split(";")
-          .find((cookie) => cookie.trim().startsWith("token="));
-        return token ? token.split("=")[1] : null;
-      };
+       // Получение токена из тела ответа
+       const token = res.data.token;
 
-      // Использование функции для получения токена
-      const token = getTokenFromCookie();
-
-      if (token != null) {
-        localStorage.setItem("token", token);
-        updateState(true);
-        navigate("/personalAccount");
-      }else{
-        console.error('Проблема с куками')
-      }
-    } catch (error) {
-      if (error.response) {
-        if (error.response.status === 405) {
-          console.error(error.response.data.message);
-          toast(
-            (t) => (
-              <span>
-                Забыли пароль?¯\_(ツ)_/¯ Восстановим! 😀
-                <button
-                  className={style.btn}
-                  onClick={() => toast.dismiss(navigate("/changePassword"))}
-                >
-                  Жми сюда!
-                </button>
-              </span>
-            ),
-            { duration: 8000 }
-          );
-        } else if (error.response.status === 404) {
-          console.error(error.response.data.message);
-          toast(
-            (t) => (
-              <span>
-                Такого аккаунта не существует¯\_(ツ)_/¯ Хотите зарегистрироваться?!
-                <button
-                  className={style.btn}
-                  onClick={() => toast.dismiss(navigate("/reg"))}
-                >
-                  Жми сюда!
-                </button>
-              </span>
-            ),
-            { duration: 8000 }
-          );
-        }
-      } else {
-        // Обработка ошибок, которые не связаны с ответом сервера (например, сетевая ошибка)
-        console.error("Ошибка запроса:", error.message);
-        toast.error("Ошибка запроса, попробуйте снова позже.");
-      }
-    }
-  };
+       if (token) {
+         localStorage.setItem("token", token);
+         updateState(true);
+         navigate("/personalAccount");
+       } else {
+         console.error('Проблема с получением токена');
+       }
+     } catch (error) {
+       if (error.response) {
+         if (error.response.status === 405) {
+           console.error(error.response.data.message);
+           toast(
+             (t) => (
+               <span>
+                 Забыли пароль?¯\_(ツ)_/¯ Восстановим! 😀
+                 <button
+                   className={style.btn}
+                   onClick={() => toast.dismiss(navigate("/changePassword"))}
+                 >
+                   Жми сюда!
+                 </button>
+               </span>
+             ),
+             { duration: 8000 }
+           );
+         } else if (error.response.status === 404) {
+           console.error(error.response.data.message);
+           toast(
+             (t) => (
+               <span>
+                 Такого аккаунта не существует¯\_(ツ)_/¯ Хотите зарегистрироваться?!
+                 <button
+                   className={style.btn}
+                   onClick={() => toast.dismiss(navigate("/reg"))}
+                 >
+                   Жми сюда!
+                 </button>
+               </span>
+             ),
+             { duration: 8000 }
+           );
+         }
+       } else {
+         // Обработка ошибок, которые не связаны с ответом сервера (например, сетевая ошибка)
+         console.error("Ошибка запроса:", error.message);
+         toast.error("Ошибка запроса, попробуйте снова позже.");
+       }
+     }
+   };
+ 
 
   return (
     <div className={style.container}>

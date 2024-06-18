@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { baseUrl } from "../../../Urls";
 
 import { ImageSlider } from "../../../components/ImageSlider/ImageSlider";
 
 export const ProductPage = ({ isAuth }) => {
   const { _id } = useParams();
-  const navigate = useNavigate();
 
-  const API_PRODUCTS = "https://booking-service-backend.onrender.com/houses";
+  const API_PRODUCTS = `${baseUrl}/houses`;
 
   const [item, setItem] = useState({
     price: "",

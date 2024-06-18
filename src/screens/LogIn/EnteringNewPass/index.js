@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import style from "./style.module.css";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
+import { baseUrl } from "../../../Urls";
 
 
 export const EmailNewPassword = () => {
   const location = useLocation();
-  const API_USERS = "https://booking-service-backend.onrender.com/users";
+  const API_USERS = `${baseUrl}/users`;
 
   const id = location.state?.id; // Получение _id из стейта
 

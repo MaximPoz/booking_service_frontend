@@ -3,8 +3,9 @@ import style from "./style.module.css";
 import { Product } from "./allProduct";
 import { ToolBar } from "../../components/ToolBar/ToolBar";
 import axios from "axios";
+import { baseUrl } from "../../Urls";
 
-const API_PRODUCTS = "https://booking-service-backend.onrender.com/houses";
+const API_PRODUCTS = `${baseUrl}/houses`
 
 export const List = () => {
   const [items, setItems] = useState([]);
