@@ -38,7 +38,7 @@ export default function App() {
 
 
   let itemsListNoAuth = [
-    { nameNav: "Список помещений", url: "project_cooking_service" },
+    { nameNav: "Список помещений", url: "" },
     { nameNav: "Авторизация", url: "logIn" },
     { nameNav: "Регистрация", url: "reg" },
   ];
@@ -66,7 +66,7 @@ export default function App() {
         <FootBar footer={footer} />
 
         <Routes>
-          <Route path="/project_cooking_service" element={<List />} />
+          <Route path="/" element={<List />} />
 
           <Route path="/logIn" element={<LogIn updateState={updateState} />} />
 
