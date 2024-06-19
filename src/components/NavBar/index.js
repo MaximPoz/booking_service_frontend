@@ -9,7 +9,7 @@ export const NavBar = ({ itemsList }) => {
         <Link to={"/project_cooking_service"}>
           <img
             className={style.logo}
-            src="/project_cooking_service/logo111.jpeg"
+            src="/logo111.jpeg"
             alt="mFlogo"
           />
         </Link>
