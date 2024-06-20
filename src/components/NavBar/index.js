@@ -6,7 +6,7 @@ export const NavBar = ({ itemsList }) => {
     <div className={style.container}>
       <div className={style.nav}>
         
-        <Link to={"/project_cooking_service"}>
+        <Link to={"/"}>
           <img
             className={style.logo}
             src="/logo111.jpeg"

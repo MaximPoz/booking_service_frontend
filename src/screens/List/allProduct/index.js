@@ -14,7 +14,7 @@ export const Product = ({ items }) => {
             <Link to={`/${_id}`} key={_id}>
               <div className={style.item} key={title}>
                 <img
-                  src={img && img.length > 0 ? img[0] : "/project_cooking_service/imgApartments/1/1.jpeg"}
+                  src={img && img.length > 0 ? img[0] : "/imgApartments/1/1.jpeg"}
                   alt="картинка помещения"
                 />
                 <p className={style.textClass}>

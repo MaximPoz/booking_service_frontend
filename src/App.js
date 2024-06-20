@@ -44,7 +44,7 @@ export default function App() {
   ];
 
   let itemsListIsAuth = [
-    { nameNav: "Список помещений", url: "project_cooking_service" },
+    { nameNav: "Список помещений", url: "" },
     { nameNav: "Личный кабинет", url: "personalAccount" },
   ];
 
