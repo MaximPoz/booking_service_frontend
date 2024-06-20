@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { createContext, useContext } from 'react';
+import React from 'react';
 import { NavBar } from "./components/NavBar";
 import { FootBar } from "./components/FootBar";
 import { LogIn } from "./screens/LogIn";
@@ -21,7 +21,6 @@ import { EmailNewPassword } from "./screens/LogIn/EnteringNewPass";
 import { SuccessPasswordRestored } from "./screens/LogIn/SuccessPasswordRestored";
 
 
-export const MyContext = createContext();
 
 export default function App() {
   // Получаем значение isAuth из локального хранилища при загрузке компонента

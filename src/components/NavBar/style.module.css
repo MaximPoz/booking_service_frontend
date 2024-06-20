@@ -1,21 +1,9 @@
-/* .container {
-  width: 100%;
-  background-color: #082c42;
-  font-size: 20px; 
-  font-weight: bold; 
-  color: #da7e51; 
-  letter-spacing: 2px; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-  padding-top: 100px;
-} */
-
 .nav {
-  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
   background-color: #082c42;
-  z-index: 1000; /* Убедитесь, что z-index выше, чем у других элементов на странице */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +30,6 @@
 
 .menu li:last-child {
   margin-right: 0;
-  
 }
 
 .menu li a {
@@ -55,15 +42,129 @@
 }
 
 .menu li a:hover {
-  color: #da7e51; /* Change to desired hover color */
+  color: #da7e51;
 }
 
 .nameSite {
   display: flex;
-  font-size: 24px; /* Увеличиваем размер шрифта */
-  font-weight: bold; /* Делаем текст жирным */
-  color: #da7e51; /* Изменяем цвет текста на томатный */
-  text-transform: uppercase; /* Преобразуем текст в верхний регистр */
-  letter-spacing: 2px; /* Увеличиваем расстояние между буквами */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавляем тень к тексту */
+  left: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #da7e51;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile Styles */
+.hamburger {
+  display: none;
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu.mobileMenuOpen {
+    display: flex;
+  }
+
+  .menu ul {
+    position: fixed;
+    right: 20px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(8, 44, 66, 0.9)
+  }
+
+  .menu li {
+    margin: 3px 0px 3px 0px;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .hamburger {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .nameSite {
+    position: absolute;
+    font-size: 18px;
+    margin-left: 100px;
+  }
+}
+
+
+@media (max-width: 390px) {
+  .nav {
+    top: 0;
+    left: 0;
+    width: 160%;
+    background-color: #082c42;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu.mobileMenuOpen {
+    display: flex;
+  }
+
+  .menu ul {
+    position: fixed;
+    right: 20px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    background-color: rgba(8, 44, 66, 0.8)
+  }
+
+  .menu li {
+    margin: 3px 0px 3px 0px;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .hamburger {
+   position: fixed;
+  }
+
+  .nameSite {
+    position: absolute;
+    font-size: 18px;
+    margin-left: 100px;
+  }
 }

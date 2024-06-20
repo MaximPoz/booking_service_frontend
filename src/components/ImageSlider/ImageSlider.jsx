@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 import { LiaAngleDoubleLeftSolid, LiaAngleDoubleRightSolid } from "react-icons/lia";
 import { FaRegCircleDot, FaRegCircle } from "react-icons/fa6";
 import { v4 as uuidv4 } from 'uuid';
@@ -25,14 +24,14 @@ export const ImageSlider = ({ images }) => {
 
   return (
     <section className={s.skipSection}>
-      <a className={s.skipLink}></a>
+      <span className={s.skipLink}></span>
 
       <div className={s.imgColumn}>
         {images.map((url) => (
           <img
             key={uuidv4()}
             src={url}
-            alt={'image'}
+            alt={'Изображение помещения'}
             className={s.imgSliderImg}
             style={{ translate: `${-100 * imageIndex}%` }}
           />
