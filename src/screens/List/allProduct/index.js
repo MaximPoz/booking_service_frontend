@@ -20,7 +20,7 @@ export const Product = ({ items }) => {
                 <p className={style.textClass}>
                   <b>{title}</b>
                 </p>
-                <p className={style.textClass}>Цена за сутки: {price} рублей</p>
+                <p className={style.textPrice}>Цена за сутки: {price} рублей</p>
                 <p className={style.textClass}>Площадь: {area} м²</p>
                 <p className={style.textClass}>Адрес: {address} </p>
                 <p className={style.textClass}>Описание: {description}</p>

@@ -12,7 +12,7 @@ export const NavBar = ({ itemsList }) => {
   return (
     <div className={style.container}>
       <div className={style.nav}>
-        <Link to={"/"}>
+        <Link to={"/"} className={style.linkLogo}>
           <img
             className={style.logo}
             src='/logo111.jpeg'

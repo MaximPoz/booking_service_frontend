@@ -1,29 +1,29 @@
 .toolbar {
   position: fixed;
   top: 12%;
-  left: -200px ;
+  left: -200px;
   width: 245px;
   max-height: 100%;
   transition: right 0.3s ease;
-  border-radius: 0 20px 20px 0 ;
-  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out; /* Кайф */
+  border-radius: 0 20px 20px 0;
+  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out;  /* Кайф */
 }
 
 @media (max-height: 1064px) {
   .toolbar {
-    top: 20%; 
+    top: 20%;
   }
 }
 
 @media (max-height: 900px) {
   .toolbar {
-    top: 30%; 
+    top: 30%;
   }
 }
 
 @media (max-height: 630px) {
   .toolbar {
-    top: 40%; 
+    top: 40%;
   }
 }
 
@@ -31,7 +31,7 @@
   left: 0;
   background-color: #082c42;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out; 
+  transition: left 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 .filter {
@@ -50,7 +50,7 @@
 }
 
 .filterElement:hover {
-  color: #da7e51; 
+  color: #da7e51;
 }
 
 .priceFilter {
@@ -106,7 +106,7 @@
   transform: scale(2);
 }
 
-.buttonForm{
+.buttonForm {
   padding: 10px 20px;
   margin: 10px 10px 10px 50px;
   background-color: transparent;
@@ -116,4 +116,49 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 484px) {
+  .toolbar {
+    left: -90px;
+    width: 120px;
+    top: 13%;
+  }
+
+  .filterElement {
+    font-size: 10px;
+  }
+
+  .priceFilter {
+    margin-top: 5px;
+  }
+
+  .titleFilter {
+    font-size: 10px;
+    margin-top: 0px;
+  }
+
+  .input {
+    width: 40px;
+    font-size: 10px;
+  }
+
+  .buttonForm {
+    padding: 2px 3px;
+    margin: 10px 0px 10px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btnOpen {
+    position: absolute;
+    right: -19px;
+    /* margin: 20px; */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #da7e51;
+    transform: scale(1.5);
+  }
 }
