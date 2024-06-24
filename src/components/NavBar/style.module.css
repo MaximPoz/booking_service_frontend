@@ -1,13 +1,13 @@
 .nav {
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   background-color: #082c42;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1px;
+  z-index: 1;
 }
 
 .logo {
@@ -18,7 +18,9 @@
   transform: scale(1);
 }
 
-
+.menu{
+  margin-right: 20px;
+}
 
 .menu ul {
   list-style-type: none;
@@ -79,7 +81,7 @@
     }
 
   .menu.mobileMenuOpen {
-    display: flex;
+    display: block;
   }
 
   .menu ul {
@@ -103,7 +105,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-style: normal;
-    font-size: 14px;
+    font-size: 21px;
   }
 
   .hamburger {
@@ -169,7 +171,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-style: normal;
-    font-size: 14px;
+    font-size: 21px;
   }
 
   .hamburger {

@@ -17,7 +17,7 @@ export const Product = ({ items }) => {
                   src={img && img.length > 0 ? img[0] : "/imgApartments/1/1.jpeg"}
                   alt="картинка помещения"
                 />
-                <p className={style.textClass}>
+                <p className={style.textTitle}>
                   <b>{title}</b>
                 </p>
                 <p className={style.textPrice}>Цена за сутки: {price} рублей</p>
